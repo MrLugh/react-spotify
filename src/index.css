@@ -1,0 +1,43 @@
+@import '~antd/dist/antd.css';
+
+body {
+  font-family: 'Proxima Nova', Georgia, sans-serif;
+}
+
+.layout-main {
+  min-height: 100vh;
+  background: #181818;
+}
+
+.header {
+  background: #181818;
+}
+
+.layout-content {
+  margin-left: 200px;
+}
+
+.sidebar {
+  overflow: auto;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  background: #181818;
+}
+
+.sidebar .logo {
+  height: 32px;
+  margin: 16px;
+}
+
+.sidebar .logo img {
+  width: 140px;
+}
+
+.main-content {
+  margin: 24px 16px 0;
+}
+
+.footer {
+  text-align: center;
+}
