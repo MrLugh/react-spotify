@@ -18,10 +18,10 @@ export default class DefaultLayout extends Component<any, any> {
                         <Layout className="layout-main">
                             <Sidebar />
                             <Layout className="layout-content">
-                                <Header />
-                                <Content className="main-content">
+                                <Content className="content-main">
                                     <Component {...matchProps} />
                                 </Content>
+                                <Header />
                             </Layout>
                         </Layout>
                     );

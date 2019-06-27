@@ -5,6 +5,7 @@ import { setToken } from '../actions/tokenActions';
 import { fetchUser } from '../actions/userActions';
 import { BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
 import DefaultLayout from '../layouts/DefaultLayout';
+import SpinLoader from './SpinLoader';
 import Dummy from './Dummy';
 
 class App extends React.Component<any, any> {
@@ -21,23 +22,24 @@ class App extends React.Component<any, any> {
 	  if(!hashParams.access_token) {
 	    window.location.href = 'https://accounts.spotify.com/authorize?client_id=62cefaf3d081421989a8124e0ce0bada&scope=playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20user-read-recently-played%20playlist-modify-private%20ugc-image-upload%20user-follow-modify%20user-follow-read%20user-library-read%20user-library-modify%20user-read-private%20user-read-email%20user-top-read%20user-read-playback-state&response_type=token&redirect_uri=http://localhost:3000/';
 	  } else {
-	    this.props.setToken(hashParams.access_token);
+      this.props.setToken(hashParams.access_token);
+      this.props.fetchUser(hashParams.access_token);
     }
 
   }
-  
-	componentWillReceiveProps(nextProps: any) {
-	  if(nextProps.token) {
-	    this.props.fetchUser(nextProps.token);
-	  };
 
-	}
 
   render() {
+
+    if (!this.props.token || !this.props.user) {
+      return <SpinLoader />;
+    }
+
     return (
       <Router>
         <Switch>
           <DefaultLayout exact path="/" component={Dummy} />
+          <DefaultLayout exact path="/me" component={Dummy} />
           <DefaultLayout exact path="/artists" component={Dummy} />
           <DefaultLayout exact path="/songs" component={Dummy} />
           <Redirect to="/" />
@@ -51,6 +53,7 @@ const mapStateToProps = (state: any) => {
 
   return {
     token: state.tokenReducer.token,
+    user: state.userReducer.user,
   };
 
 };
