@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
 import DefaultLayout from '../layouts/DefaultLayout';
 import SpinLoader from './SpinLoader';
 import Dummy from './Dummy';
+import UserProfile from './UserProfile';
 
 class App extends React.Component<any, any> {
 
@@ -39,7 +40,7 @@ class App extends React.Component<any, any> {
       <Router>
         <Switch>
           <DefaultLayout exact path="/" component={Dummy} />
-          <DefaultLayout exact path="/me" component={Dummy} />
+          <DefaultLayout exact path="/me" component={UserProfile} />
           <DefaultLayout exact path="/artists" component={Dummy} />
           <DefaultLayout exact path="/songs" component={Dummy} />
           <Redirect to="/" />

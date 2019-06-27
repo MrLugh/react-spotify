@@ -17,7 +17,7 @@ body {
 .header {
   background: #181818;
   color: #fefefe;
-  padding: 0 24px;
+  padding: 0 30px;
 }
 
 .sidebar {
@@ -43,7 +43,67 @@ body {
 }
 
 .content-main {
-  margin: 24px 16px 0;
+  padding: 30px;
+  color: #fff;
+}
+
+.user-profile {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-profile button {
+  margin: 10px 0;
+  padding: 7px 22px;
+  text-transform: uppercase;
+  background: rgba(24,24,24,.7);
+  color: #84BE88;
+  border-color: #84BE88;
+  min-width: 200px;
+  border-radius: 500px;
+}
+
+.me-title {
+  font-size: 46px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 30px 0;
+}
+
+.artist-avatar {
+  border-width: 15px;
+  border-color: #84BE88 #2a3137;
+  border-style: solid;
+  border-radius: 100%;
+  transition:all 0.25s ease-in-out 0s;
+  transform: scale(0.9);
+}
+
+.artist-avatar.me-avatar {
+  box-shadow: 0 0 0px 0px rgba(255, 255, 255, 0.8);
+  
+}
+
+.artist-avatar img {
+  opacity: 1;
+  transition:all 0.25s ease-in-out 0s;
+}
+
+.artist-avatar:hover {
+  border-width: 50px;
+  transform: scale(1);
+  background: transparent;
+}
+
+.artist-avatar:hover {
+  box-shadow: 0 0 20px 6px rgba(132, 190, 136, 0.8);
+}
+
+.artist-avatar.me-avatar:hover img {
+  opacity: 0.3;
 }
 
 .footer {
