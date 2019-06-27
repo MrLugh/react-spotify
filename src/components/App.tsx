@@ -2,6 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { setToken } from '../actions/tokenActions';
+import { fetchUser } from '../actions/userActions';
 import { BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
 import DefaultLayout from '../layouts/DefaultLayout';
 import Dummy from './Dummy';
@@ -22,6 +23,13 @@ class App extends React.Component<any, any> {
 	  } else {
 	    this.props.setToken(hashParams.access_token);
     }
+
+  }
+  
+	componentWillReceiveProps(nextProps: any) {
+	  if(nextProps.token) {
+	    this.props.fetchUser(nextProps.token);
+	  };
 
 	}
 
@@ -51,6 +59,7 @@ const mapDispatchToProps = (dispatch: any) => {
 
   return bindActionCreators({
     setToken,
+    fetchUser,
   },dispatch);
 
 };
