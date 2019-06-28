@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Layout } from "antd";
-import Header from "../views/Header";
-import Sidebar from "../views/Sidebar";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
 import { Route } from "react-router-dom";
 const { Content } = Layout;
 

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Layout, Menu, Icon } from "antd";
-import logo from "../assets/img/cloudcial-horizontal-white.png";
+import logo from "../../assets/img/cloudcial-horizontal-white.png";
 const { Sider } = Layout;
 
 class Sidebar extends React.Component<any, any> {

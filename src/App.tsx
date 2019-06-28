@@ -1,15 +1,15 @@
 import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { setToken } from "../actions/tokenActions";
-import { fetchUser } from "../actions/userActions";
+import { setToken } from "./actions/tokenActions";
+import { fetchUser } from "./actions/userActions";
 import { BrowserRouter as Router, Redirect, Switch } from "react-router-dom";
-import { SPOTIFY } from '../constants/api';
-import DefaultLayout from "../layouts/DefaultLayout";
-import SpinLoader from "./SpinLoader";
-import Dummy from "./Dummy";
-import UserProfile from "../views/UserProfile";
-import ArtistsSearch from "../views/ArtistsSearch";
+import { SPOTIFY } from './constants/api';
+import DefaultLayout from "./components/layouts/DefaultLayout";
+import SpinLoader from "./components/SpinLoader";
+import Dummy from "./components/Dummy";
+import UserProfile from "./pages/UserProfile";
+import ArtistsSearch from "./pages/ArtistsSearch";
 
 class App extends React.Component<any, any> {
   componentDidMount() {
