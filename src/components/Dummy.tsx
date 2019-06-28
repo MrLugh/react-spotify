@@ -1,12 +1,15 @@
-import React from 'react';
+import React from "react";
 
 class Dummy extends React.Component<any, any> {
   state = {};
 
   render() {
     return (
-    <span>Dummy</span>
-  )}
+      <div className="content-main">
+        <span>Dummy</span>
+      </div>
+    );
+  }
 }
 
 export default Dummy;
