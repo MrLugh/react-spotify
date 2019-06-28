@@ -1,5 +1,6 @@
 import { UserLogged } from "../store/types/models";
 import { FETCH_USER, UserActionTypes } from "../store/types/actionTypes";
+import { SPOTIFY } from '../constants/api';
 
 export const fetchUserSuccess = (user: UserLogged): UserActionTypes => {
   return {
@@ -9,8 +10,8 @@ export const fetchUserSuccess = (user: UserLogged): UserActionTypes => {
 };
 
 export const fetchUser = (accessToken: string) => {
-  return (dispatch: any) => {
-    const request = new Request("https://api.spotify.com/v1/me", {
+  return (dispatch: CallableFunction) => {
+    const request = new Request(`${SPOTIFY.api}/me`, {
       headers: new Headers({
         Authorization: "Bearer " + accessToken,
       }),

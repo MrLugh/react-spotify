@@ -1,4 +1,4 @@
-import { UserLogged } from "./models";
+import { UserLogged, ArtistSearch } from "./models";
 
 export const SET_TOKEN = "SET_TOKEN";
 interface SetTokenAction {
@@ -15,3 +15,11 @@ interface FetchUserAction {
 }
 
 export type UserActionTypes = FetchUserAction;
+
+export const FETCH_ARTISTS_SUCCESS = "FETCH_ARTISTS_SUCCESS";
+interface SearchArtistsAction {
+  type: typeof FETCH_ARTISTS_SUCCESS;
+  payload: ArtistSearch;
+}
+
+export type SearchArtistsActionTypes = SearchArtistsAction;

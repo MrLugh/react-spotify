@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { setToken } from "../actions/tokenActions";
 import { fetchUser } from "../actions/userActions";
 import { BrowserRouter as Router, Redirect, Switch } from "react-router-dom";
+import { SPOTIFY } from '../constants/api';
 import DefaultLayout from "../layouts/DefaultLayout";
 import SpinLoader from "./SpinLoader";
 import Dummy from "./Dummy";
@@ -21,8 +22,7 @@ class App extends React.Component<any, any> {
     }
 
     if (!hashParams.access_token) {
-      window.location.href =
-        "https://accounts.spotify.com/authorize?client_id=62cefaf3d081421989a8124e0ce0bada&scope=playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20user-read-recently-played%20playlist-modify-private%20ugc-image-upload%20user-follow-modify%20user-follow-read%20user-library-read%20user-library-modify%20user-read-private%20user-read-email%20user-top-read%20user-read-playback-state&response_type=token&redirect_uri=http://localhost:3000/";
+      window.location.href = SPOTIFY.authorize;
     } else {
       this.props.setToken(hashParams.access_token);
       this.props.fetchUser(hashParams.access_token);

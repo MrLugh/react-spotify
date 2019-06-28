@@ -4,17 +4,54 @@ export interface Image {
   url: string;
 }
 
+export interface Followers {
+  href: string;
+  total: number;
+}
+
+export interface ExternalUrl {
+  key: string;
+  value: string;
+}
+
 export interface UserLogged {
+  birthdate: string,
   country: string;
   display_name: string;
   email: string;
-  explicit_content: any;
-  external_urls: any;
-  followers: any;
+  external_urls: ExternalUrl[];
+  followers: Followers;
   href: string;
   id: string;
   images: Image[];
   product: string;
   type: string;
   uri: string;
+}
+
+export interface Artist {
+  external_urls: ExternalUrl[];
+  followers: Followers;
+  genres: string[];
+  href: string;
+  id: string;
+  images: Image[];
+  name: string;
+  popularity: number;
+  type: string;
+  uri: string;
+}
+
+export interface Paging {
+  href: string;  
+  limit: number;
+  next: string;
+  offset: number;
+  previous: string;
+  total: number;  
+}
+
+export interface ArtistSearch {
+  items: Artist[];
+  paging: Paging;
 }
