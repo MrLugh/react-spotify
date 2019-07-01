@@ -15,7 +15,7 @@ export interface ExternalUrl {
 }
 
 export interface UserLogged {
-  birthdate: string,
+  birthdate: string;
   country: string;
   display_name: string;
   email: string;
@@ -42,16 +42,16 @@ export interface Artist {
   uri: string;
 }
 
-export interface Paging {
-  href: string;  
+export interface ArtistSearch {
+  href: string;
+  items: Artist[];
   limit: number;
   next: string;
   offset: number;
   previous: string;
-  total: number;  
+  total: number;
 }
 
-export interface ArtistSearch {
-  items: Artist[];
-  paging: Paging;
+export interface ArtistSearchResponse {
+  artists: ArtistSearch
 }

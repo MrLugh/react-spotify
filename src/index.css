@@ -88,16 +88,17 @@ body {
   margin: 30px 0;
 }
 
+.artist-card {
+  text-align: center;
+}
+
 .artist-avatar {
-  border-width: 15px;
+  border-width: 5px;
   border-color: #84be88 #2a3137;
   border-style: solid;
   border-radius: 100%;
   transition: all 0.25s ease-in-out 0s;
   transform: scale(0.9);
-}
-
-.artist-avatar.me-avatar {
   box-shadow: 0 0 0px 0px rgba(255, 255, 255, 0.8);
 }
 
@@ -107,17 +108,18 @@ body {
 }
 
 .artist-avatar:hover {
-  border-width: 50px;
+  border-width: 15px;
   transform: scale(1);
   background: transparent;
-}
-
-.artist-avatar:hover {
   box-shadow: 0 0 20px 6px rgba(132, 190, 136, 0.8);
 }
 
-.artist-avatar.me-avatar:hover img {
+.artist-avatar:hover img {
   opacity: 0.3;
+}
+
+.artist-title {
+  color: #fff;
 }
 
 .footer {
@@ -141,3 +143,40 @@ body {
 .search:focus {
   box-shadow: 0 0 5px 0px rgba(132, 190, 136, 0.8);
 }
+
+.pagination {
+  padding: 10px 0 0 0;
+  color: #fff;
+  text-align: center;
+}
+
+.pagination .ant-pagination-item,
+.pagination .ant-pagination-item-link, 
+.pagination .ant-pagination-prev, 
+.pagination .ant-pagination-next, 
+.pagination .ant-pagination-jump-prev, 
+.pagination .ant-pagination-jump-next {
+  background: transparent;
+  color: #fff;
+}
+
+.pagination.ant-pagination-simple .ant-pagination-prev .ant-pagination-item-link:hover,
+.pagination.ant-pagination-simple .ant-pagination-next .ant-pagination-item-link:hover,
+.pagination.ant-pagination-simple .ant-pagination-prev .ant-pagination-item-link:focus,
+.pagination.ant-pagination-simple .ant-pagination-next .ant-pagination-item-link:focus { 
+  color: #84be88;
+  border-color: #84be88;
+}
+
+.pagination .ant-pagination-item a {
+  color: #fff;
+}
+
+.pagination.ant-pagination-simple .ant-pagination-simple-pager input {
+  background: transparent;
+  color: #fff;
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-radius: 0;
+}
+

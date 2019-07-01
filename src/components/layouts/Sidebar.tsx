@@ -29,12 +29,12 @@ class Sidebar extends React.Component<any, any> {
               <span className="nav-text">Songs</span>
             </Link>
           </Menu.Item>
-          <Menu.Item key="me">
+          {user && (<Menu.Item key="me">
             <Link to={"/me"}>
               <Icon type="user"></Icon>
               <span className="nav-text">{user.display_name}</span>
             </Link>
-          </Menu.Item>
+          </Menu.Item>)}
         </Menu>
       </Sider>
     );
@@ -43,7 +43,7 @@ class Sidebar extends React.Component<any, any> {
 
 const mapStateToProps = (state: any) => {
   return {
-    user: state.user.user,
+    user: state.user.response,
   };
 };
 

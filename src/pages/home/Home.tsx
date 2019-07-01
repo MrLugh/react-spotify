@@ -1,17 +1,16 @@
 import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { setToken } from "./actions/tokenActions";
-import { fetchUser } from "./actions/userActions";
+import { setToken } from "../../actions/tokenActions";
 import { BrowserRouter as Router, Redirect, Switch } from "react-router-dom";
-import { SPOTIFY } from './constants/api';
-import DefaultLayout from "./components/layouts/DefaultLayout";
-import SpinLoader from "./components/SpinLoader";
-import Dummy from "./components/Dummy";
-import UserProfile from "./pages/UserProfile";
-import ArtistsSearch from "./pages/ArtistsSearch";
+import { SPOTIFY } from "../../constants/api";
+import DefaultLayout from "../../components/layouts/DefaultLayout";
+import SpinLoader from "../../components/SpinLoader";
+import Dummy from "../../components/Dummy";
+import UserProfileContainer from "../User/UserProfileContainer";
+import ArtistsSearchContainer from "../Artist/Search/ArtistSearchContainer";
 
-class App extends React.Component<any, any> {
+class Home extends React.Component<any, any> {
   componentDidMount() {
     let hashParams: any = {};
     let e,
@@ -25,12 +24,11 @@ class App extends React.Component<any, any> {
       window.location.href = SPOTIFY.authorize;
     } else {
       this.props.setToken(hashParams.access_token);
-      this.props.fetchUser(hashParams.access_token);
     }
   }
 
   render() {
-    if (!this.props.token || !this.props.user) {
+    if (!this.props.token) {
       return <SpinLoader />;
     }
 
@@ -38,8 +36,12 @@ class App extends React.Component<any, any> {
       <Router>
         <Switch>
           <DefaultLayout exact path="/" component={Dummy} />
-          <DefaultLayout exact path="/me" component={UserProfile} />
-          <DefaultLayout exact path="/artists" component={ArtistsSearch} />
+          <DefaultLayout exact path="/me" component={UserProfileContainer} />
+          <DefaultLayout
+            exact
+            path="/artists"
+            component={ArtistsSearchContainer}
+          />
           <DefaultLayout exact path="/songs" component={Dummy} />
           <Redirect to="/" />
         </Switch>
@@ -50,8 +52,7 @@ class App extends React.Component<any, any> {
 
 const mapStateToProps = (state: any) => {
   return {
-    token: state.token.token,
-    user: state.user.user,
+    token: state.token,
   };
 };
 
@@ -59,7 +60,6 @@ const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators(
     {
       setToken,
-      fetchUser,
     },
     dispatch
   );
@@ -68,4 +68,4 @@ const mapDispatchToProps = (dispatch: any) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(Home);

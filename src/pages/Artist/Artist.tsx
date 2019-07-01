@@ -1,10 +1,10 @@
 import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { fetchUser } from "../actions/userActions";
+import { fetchUser } from "../../actions/userActions";
 import { Avatar, Button } from "antd";
 
-class UserProfile extends React.Component<any, any> {
+class CurrentUser extends React.Component<any, any> {
   state = {};
 
   componentDidMount() {
@@ -79,4 +79,4 @@ const mapDispatchToProps = (dispatch: any) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UserProfile);
+)(CurrentUser);
