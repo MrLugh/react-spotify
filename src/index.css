@@ -12,6 +12,11 @@ body {
   font-family: "Proxima Thin", Georgia, sans-serif;
 }
 
+a,
+.ant-btn-link {
+  color: #84be88;
+}
+
 .layout-main {
   min-height: 100vh;
   background: #181818;
@@ -101,6 +106,7 @@ body {
 }
 
 .me-title {
+  font-family: "Proxima Bold";
   font-size: 46px;
   font-weight: bold;
   color: #fff;
@@ -109,10 +115,13 @@ body {
 }
 
 .artist-card {
+  margin-bottom: 30px;
+}
+
+.artist-card .artist-card-image {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 30px;
 }
 
 .artist-card:last-child {
@@ -146,12 +155,16 @@ body {
 }
 
 .artist-title {
+  font-family: "Proxima Bold";
   margin-left: 16px;
   color: #fff;
   font-size: 16px;
   font-weight: bold;
-  color: #fff;
   text-transform: uppercase;
+}
+
+.artist-stats {
+  margin-left: 16px;
 }
 
 .footer {
@@ -164,7 +177,7 @@ body {
   top: 0;
   z-index: 1;
   font-family: "Proxima Nova";
-  background: #181818;
+  background: rgba(0, 0, 0, 0.8);
   color: #fff;
   box-shadow: 0 0 16px 5px #181818;
   border: none;
@@ -189,7 +202,12 @@ body {
   height: 64px;
   color: #fff;
   text-align: center;
-  background: #181818;
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 16px 5px #181818;
+}
+
+.pagination:hover {
+  box-shadow: 0 -4px 6px -6px rgba(132, 190, 136, 0.8);
 }
 
 .pagination .ant-pagination-item,

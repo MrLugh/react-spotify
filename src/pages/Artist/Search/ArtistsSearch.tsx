@@ -1,7 +1,8 @@
 import React from "react";
 import { Artist } from "../../../models/models";
 import { ArtistSearchState } from "../../../store/types/actionTypes";
-import { Input, Avatar, Spin, Pagination } from "antd";
+import ArtistItem from "./ArtistItem";
+import { Input, Spin, Pagination } from "antd";
 
 interface ArtistSearchProps {
   searchValue: string;
@@ -18,7 +19,7 @@ const ArtistSearch: React.SFC<ArtistSearchProps> = ({
 }) => {
   const renderArtists = () => {
     if (!artistSearch) {
-      return "Ingresá el nombre de tu artista favorito.";
+      return "type your favorite Artists.";
     }
 
     if (artistSearch.artistPending) {
@@ -26,27 +27,16 @@ const ArtistSearch: React.SFC<ArtistSearchProps> = ({
     }
 
     if (artistSearch.artistError) {
-      return "Ups! Parece que hay un error con la búsqueda.";
+      return `Ups! There was a problem searching by ${searchValue}.`;
     }
 
     if (!artistSearch.response.artists.items.length) {
-      return "No hay resultados.";
+      return "there are no results!";
     }
 
     return artistSearch.response.artists.items
       .sort((a, b) => b.popularity - a.popularity)
-      .map((artist: Artist, key: number) => {
-        const avatarUrl =
-          artist.images.length > 0
-            ? artist.images[0].url
-            : "https://png.pngtree.com/svg/20161212/f93e57629c.svg";
-        return (
-          <div className="artist-card">
-            <Avatar className="artist-avatar" size={156} src={avatarUrl} />
-            <h3 className="artist-title">{artist.name}</h3>
-          </div>
-        );
-      });
+      .map((artist: Artist, key: number) => <ArtistItem key={key} artist={artist} />);
   };
 
   const getPageNumber = () => {
@@ -61,7 +51,7 @@ const ArtistSearch: React.SFC<ArtistSearchProps> = ({
       <Input
         value={searchValue}
         className="search"
-        placeholder="Escribir..."
+        placeholder="Search..."
         onChange={(e: any) => onHandlerChange(e.target.value)}
       />
       <div className="content-page-artists">{renderArtists()}</div>
