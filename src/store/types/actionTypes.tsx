@@ -1,4 +1,4 @@
-import { UserLogged, ArtistSearchResponse } from "../../models/models";
+import { UserLogged, ArtistSearchResponse, TrackSearchResponse } from "../../models/models";
 
 export const SET_TOKEN = "SET_TOKEN";
 interface SetTokenAction {
@@ -65,4 +65,35 @@ export interface ArtistSearchState {
   response: ArtistSearchResponse,
   artistPending: boolean,
   artistError: boolean,
+}
+
+export const FETCH_TRACKS_SUCCESS = "FETCH_TRACKS_SUCCESS";
+interface SearchTracksSuccessAction {
+  type: typeof FETCH_TRACKS_SUCCESS;
+  payload: TrackSearchResponse;
+}
+
+export const FETCH_TRACKS_ERROR = "FETCH_TRACKS_ERROR";
+interface SearchTracksErrorAction {
+  type: typeof FETCH_TRACKS_ERROR;
+}
+
+export const FETCH_TRACKS_PENDING = "FETCH_TRACKS_PENDING";
+interface SearchTracksPendingAction {
+  type: typeof FETCH_TRACKS_PENDING;
+}
+
+export type SearchTracksActionTypes = SearchTracksSuccessAction | SearchTracksErrorAction | SearchTracksPendingAction;
+
+export type SearchTracksType = (
+  accessToken: string,
+  value: string,
+  limit?: number,
+  offset?: number
+) => void;
+
+export interface TrackSearchState {
+  response: TrackSearchResponse,
+  trackPending: boolean,
+  trackError: boolean,
 }

@@ -4,6 +4,7 @@ import DefaultLayout from "../../components/layouts/DefaultLayout";
 import Dummy from "../../components/Dummy";
 import UserProfileContainer from "../User/UserProfileContainer";
 import ArtistsSearchContainer from "../Artist/Search/ArtistSearchContainer";
+import TracksSearchContainer from "../Track/Search/TrackSearchContainer";
 
 class Home extends React.Component<any, any> {
   render() {
@@ -17,7 +18,11 @@ class Home extends React.Component<any, any> {
             path="/artists"
             component={ArtistsSearchContainer}
           />
-          <DefaultLayout exact path="/songs" component={Dummy} />
+          <DefaultLayout
+            exact
+            path="/songs"
+            component={TracksSearchContainer}
+          />
           <Redirect to="/" />
         </Switch>
       </Router>

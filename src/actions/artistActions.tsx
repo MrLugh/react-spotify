@@ -23,7 +23,7 @@ export const searchArtistsPending = (): SearchArtistsActionTypes => {
   };
 };
 
-export const searchartistError = (err: Error): SearchArtistsActionTypes => {
+export const searchArtistError = (err: Error): SearchArtistsActionTypes => {
   return {
     type: FETCH_ARTISTS_ERROR,
   };
@@ -63,7 +63,7 @@ export const searchArtists: SearchArtistsType = (
       .then((res) => {
         dispatch(searchArtistsSuccess(res));
       }).catch(err => {
-        dispatch(searchartistError(err));
+        dispatch(searchArtistError(err));
       });
   };
 };

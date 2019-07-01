@@ -53,5 +53,53 @@ export interface ArtistSearch {
 }
 
 export interface ArtistSearchResponse {
-  artists: ArtistSearch
+  artists: ArtistSearch;
+}
+
+export interface Album {
+  album_type: string;
+  artists: Artist[];
+  external_urls: ExternalUrl;
+  href: string;
+  id: string;
+  images: Image[];
+  name: string;
+  release_date: string;
+  release_date_precision: string;
+  total_tracks: number;
+  type: string;
+  uri: string;
+}
+
+export interface Track {
+  album: Album;
+  artists: Artist[];
+  disc_number: number;
+  duration_ms: number;
+  explicit: false;
+  external_urls: ExternalUrl;
+  href: string;
+  id: string;
+  is_local: boolean;
+  is_playable: boolean;
+  name: string;
+  popularity: number;
+  preview_url: string;
+  track_number: number;
+  type: string;
+  uri: string;
+}
+
+export interface TrackSearch {
+  href: string;
+  items: Track[];
+  limit: number;
+  next: string;
+  offset: number;
+  previous: string;
+  total: number;
+}
+
+export interface TrackSearchResponse {
+  tracks: TrackSearch;
 }

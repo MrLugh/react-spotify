@@ -98,7 +98,8 @@ a,
   border-color: #fff;
 }
 
-.content-page-artists {
+.content-page-artists,
+.content-page-tracks {
   padding: 30px;
   height: calc(100% - 128px);
   margin: 64px 0;
@@ -114,47 +115,63 @@ a,
   margin: 30px 0;
 }
 
-.artist-card {
+.artist-card,
+.track-card {
   margin-bottom: 30px;
 }
 
-.artist-card .artist-card-image {
+.artist-card .artist-card-image,
+.track-card .track-card-image {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.artist-card:last-child {
+.artist-card:last-child,
+.track-card:last-child {
   margin-bottom: 0px;
 }
 
-.artist-avatar {
-  border-width: 5px;
+.artist-avatar,
+.track-avatar {
+  border-radius: 0;
   border-color: #84be88 #2a3137;
   border-style: solid;
-  border-radius: 100%;
   transition: all 0.25s ease-in-out 0s;
   transform: scale(0.9);
   box-shadow: 0 0 0px 0px rgba(255, 255, 255, 0.8);
 }
 
-.artist-avatar img {
-  opacity: 1;
+.artist-avatar {
+  border-width: 5px;
+  border-radius: 100%;
+}
+
+.artist-avatar img,
+.track-avatar img {
+  opacity: 0.7;
   transition: all 0.25s ease-in-out 0s;
 }
 
-.artist-avatar:hover {
-  border-width: 15px;
+.artist-avatar:hover,
+.track-avatar:hover {
   transform: scale(1);
   background: transparent;
   box-shadow: 0 0 20px 6px rgba(132, 190, 136, 0.8);
 }
 
-.artist-avatar:hover img {
-  opacity: 0.3;
+.artist-avatar:hover {
+  border-width: 15px;
 }
 
-.artist-title {
+.artist-avatar:hover img,
+.track-avatar:hover img {
+  opacity: 1;
+}
+
+.artist-title,
+.track-title,
+.album-title {
   font-family: "Proxima Bold";
   margin-left: 16px;
   color: #fff;
@@ -163,7 +180,15 @@ a,
   text-transform: uppercase;
 }
 
-.artist-stats {
+.album-title {
+  margin-left: 0;
+  font-size: 14px;
+  font-family: "Proxima Thin";
+  color: #84be88;
+}
+
+.artist-stats,
+.track-stats {
   margin-left: 16px;
 }
 

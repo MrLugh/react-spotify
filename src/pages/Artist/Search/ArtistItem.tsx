@@ -12,7 +12,7 @@ const ArtistItem: React.SFC<ArtistItemProps> = ({ artist }) => {
     artist.images.length > 0
       ? artist.images[0].url
       : "https://png.pngtree.com/svg/20161212/f93e57629c.svg";
-      
+
   return (
     <div className="artist-card">
       <div className="artist-card-image">
