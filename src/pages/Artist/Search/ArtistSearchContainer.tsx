@@ -7,7 +7,6 @@ import {
   ArtistSearchState,
 } from "../../../store/types/actionTypes";
 import ArtistsSearch from "./ArtistsSearch";
-import { Pagination } from "antd";
 
 interface ArtistSearchContainerProps {
   token: string;
@@ -43,37 +42,14 @@ class ArtistSearchContainer extends React.Component<
     this.setState({ offset: (page - 1) * 8 }, this.searchArtists);
   };
 
-  getPageNumber() {
-    const page = Math.ceil(
-      this.props.artistSearch.response.artists.offset /
-        this.props.artistSearch.response.artists.limit
-    );
-    return page + 1;
-  }
-
   render() {
     return (
-      <div style={{height: '100%'}}>
-        <ArtistsSearch
-          artistSearch={this.props.artistSearch}
-          onHandlerChange={this.handleSearchOnChange}
-        />
-        {this.props.artistSearch &&
-          this.state.search.length > 0 &&
-          !this.props.artistSearch.artistPending &&
-          !this.props.artistSearch.artistError &&
-          this.props.artistSearch.response.artists.items.length > 0 &&
-          this.props.artistSearch.response.artists.total >
-            this.props.artistSearch.response.artists.limit && (
-            <Pagination
-              className="pagination"
-              simple
-              defaultCurrent={this.getPageNumber()}
-              total={this.props.artistSearch.response.artists.total}
-              onChange={this.handlePageChange}
-            />
-          )}
-      </div>
+      <ArtistsSearch
+        searchValue={this.state.search}
+        artistSearch={this.props.artistSearch}
+        onHandlerChange={this.handleSearchOnChange}
+        onHandlerPageChange={this.handlePageChange}
+      />
     );
   }
 }

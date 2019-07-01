@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Layout } from "antd";
-import Header from "./Header";
 import Sidebar from "./Sidebar";
 import { Route } from "react-router-dom";
 const { Content } = Layout;
@@ -17,10 +16,9 @@ export default class DefaultLayout extends Component<any, any> {
             <Layout className="layout-main">
               <Sidebar />
               <Layout className="layout-content">
-                <Content>
+                <Content className="page-container">
                   <Component {...matchProps} />
                 </Content>
-                <Header />
               </Layout>
             </Layout>
           );

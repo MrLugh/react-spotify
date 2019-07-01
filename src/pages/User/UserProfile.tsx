@@ -22,7 +22,7 @@ const UserProfile: React.SFC<UserProfileProps> = ({ user }) => {
 
   return (
     <div className="content-main">
-      <div className="user-profile">
+      <div className="content-page-profile">
         <Avatar
           className="artist-avatar me-avatar"
           size={256}

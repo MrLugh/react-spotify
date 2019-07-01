@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { setToken } from "../../actions/tokenActions";
 import { fetchUser } from "../../actions/userActions";
 import { SPOTIFY } from "../../constants/api";
+import SpinLoader from "../../components/SpinLoader";
 import Home from "./Home";
 
 class HomeContainer extends React.Component<any, any> {
@@ -25,6 +26,9 @@ class HomeContainer extends React.Component<any, any> {
   }
 
   render() {
+    if (!this.props.token || !this.props.user) {
+      return <SpinLoader />;
+    }
     return <Home/>
   }
 }
@@ -32,6 +36,7 @@ class HomeContainer extends React.Component<any, any> {
 const mapStateToProps = (state: any) => {
   return {
     token: state.token,
+    user: state.user,
   };
 };
 
