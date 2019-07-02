@@ -1,12 +1,13 @@
 import React from "react";
 import { Artist } from "../../../models/models";
-import { ArtistSearchState } from "../../../store/types/actionTypes";
+import { ArtistsSearchState } from "../../../store/types/actionTypes";
 import ArtistItem from "./ArtistItem";
-import { Input, Spin, Pagination } from "antd";
+import { Input, Pagination } from "antd";
+import SpinLoader from "../../../components/SpinLoader";
 
 interface ArtistSearchProps {
   searchValue: string;
-  artistSearch: ArtistSearchState;
+  artistSearch: ArtistsSearchState;
   onHandlerChange: (value: string) => void;
   onHandlerPageChange: (page: number) => void;
 }
@@ -22,11 +23,11 @@ const ArtistSearch: React.SFC<ArtistSearchProps> = ({
       return "type your favorite Artists.";
     }
 
-    if (artistSearch.artistPending) {
-      return <Spin size="small" />;
+    if (artistSearch.artistsPending) {
+      return <SpinLoader />;
     }
 
-    if (artistSearch.artistError) {
+    if (artistSearch.artistsError) {
       return `Ups! There was a problem searching by ${searchValue}.`;
     }
 
@@ -58,8 +59,8 @@ const ArtistSearch: React.SFC<ArtistSearchProps> = ({
       <div className="pagination">
         {artistSearch &&
           searchValue.length > 0 &&
-          !artistSearch.artistPending &&
-          !artistSearch.artistError &&
+          !artistSearch.artistsPending &&
+          !artistSearch.artistsError &&
           artistSearch.response.artists.items.length > 0 &&
           artistSearch.response.artists.total >
             artistSearch.response.artists.limit && (

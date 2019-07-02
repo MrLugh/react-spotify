@@ -10,7 +10,7 @@ interface ArtistItemProps {
 const ArtistItem: React.SFC<ArtistItemProps> = ({ artist }) => {
   const avatarUrl =
     artist.images.length > 0
-      ? artist.images[0].url
+      ? artist.images.sort((a, b) => a.width - b.width)[0].url
       : "https://png.pngtree.com/svg/20161212/f93e57629c.svg";
 
   return (
@@ -22,6 +22,7 @@ const ArtistItem: React.SFC<ArtistItemProps> = ({ artist }) => {
           <ul className="artist-stats">
             <li>{artist.followers.total} followers</li>
             <li>{artist.popularity} popularity</li>
+            <li>Genres {artist.genres.join(' | ')}</li>
           </ul>
           <Link to={`/artists/${artist.id}`}>
             <Button type="link">View Profile!</Button>

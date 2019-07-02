@@ -72,7 +72,7 @@ a,
 }
 
 .content-page-profile {
-  margin-top: 30px;
+  padding-top: 30px;
   min-height: 100vh;
   display: flex;
   text-align: center;
@@ -186,6 +186,27 @@ a,
 .artist-stats,
 .track-stats {
   margin-left: 16px;
+}
+
+.content-page-artist {
+  padding: 30px;
+}
+
+.header-page-artist {
+  height: 250px;
+}
+
+.header-page-artist .cover {
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transition: all 0.25s ease-in-out 0s;
+}
+
+.header-page-artist .cover:hover {
+  opacity: 0.5;
 }
 
 .footer {

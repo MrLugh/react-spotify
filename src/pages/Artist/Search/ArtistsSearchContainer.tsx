@@ -1,31 +1,33 @@
 import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { searchTracks } from "../../../actions/trackActions";
+import { searchArtists } from "../../../actions/artistActions";
 import {
-  SearchTracksType,
-  TrackSearchState,
+  SearchArtistsType,
+  ArtistsSearchState,
 } from "../../../store/types/actionTypes";
-import TracksSearch from "./TracksSearch";
+import ArtistsSearch from "./ArtistsSearch";
 import { debounce } from "lodash";
 
-interface TrackSearchContainerProps {
+interface ArtistsSearchContainerProps {
   token: string;
-  trackSearch: TrackSearchState;
-  searchTracks: SearchTracksType;
+  artistSearch: ArtistsSearchState;
+  searchArtists: SearchArtistsType;
 }
 
-class TrackSearchContainer extends React.Component<TrackSearchContainerProps> {
+class ArtistsSearchContainer extends React.Component<
+  ArtistsSearchContainerProps
+> {
   state = { search: "", offset: 0 };
 
-  constructor(props: TrackSearchContainerProps) {
+  constructor(props: ArtistsSearchContainerProps) {
     super(props);
-    this.searchTracks = debounce(this.searchTracks, 500);
-  }  
+    this.searchArtists = debounce(this.searchArtists, 500);
+  }
 
-  searchTracks() {
+  searchArtists() {
     if (this.state.search.length > 0) {
-      this.props.searchTracks(
+      this.props.searchArtists(
         this.props.token,
         this.state.search,
         8,
@@ -39,18 +41,18 @@ class TrackSearchContainer extends React.Component<TrackSearchContainerProps> {
   }
 
   handleSearchOnChange = (search: string) => {
-    this.setState({ search, offset: 0 }, this.searchTracks);
+    this.setState({ search, offset: 0 }, this.searchArtists);
   };
 
   handlePageChange = (page: number) => {
-    this.setState({ offset: (page - 1) * 8 }, this.searchTracks);
+    this.setState({ offset: (page - 1) * 8 }, this.searchArtists);
   };
 
   render() {
     return (
-      <TracksSearch
+      <ArtistsSearch
         searchValue={this.state.search}
-        trackSearch={this.props.trackSearch}
+        artistSearch={this.props.artistSearch}
         onHandlerChange={this.handleSearchOnChange}
         onHandlerPageChange={this.handlePageChange}
       />
@@ -61,14 +63,14 @@ class TrackSearchContainer extends React.Component<TrackSearchContainerProps> {
 const mapStateToProps = (state: any) => {
   return {
     token: state.token.token,
-    trackSearch: state.tracks,
+    artistSearch: state.artists,
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators(
     {
-      searchTracks,
+      searchArtists,
     },
     dispatch
   );
@@ -77,4 +79,4 @@ const mapDispatchToProps = (dispatch: any) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(TrackSearchContainer);
+)(ArtistsSearchContainer);

@@ -1,5 +1,11 @@
-import { UserLogged, ArtistSearchResponse, TrackSearchResponse } from "../../models/models";
+import {
+  UserLogged,
+  ArtistsSearchResponse,
+  TracksSearchResponse,
+  Artist,
+} from "../../models/models";
 
+// token
 export const SET_TOKEN = "SET_TOKEN";
 interface SetTokenAction {
   type: typeof SET_TOKEN;
@@ -8,6 +14,7 @@ interface SetTokenAction {
 
 export type TokenActionTypes = SetTokenAction;
 
+// user
 export const FETCH_USER_SUCCESS = "FETCH_USER_SUCCESS";
 interface FetchUserSuccessAction {
   type: typeof FETCH_USER_SUCCESS;
@@ -24,22 +31,24 @@ interface FetchUserPendingAction {
   type: typeof FETCH_USER_PENDING;
 }
 
-export type UserActionTypes = FetchUserSuccessAction | FetchUserErrorAction | FetchUserPendingAction;
+export type UserActionTypes =
+  | FetchUserSuccessAction
+  | FetchUserErrorAction
+  | FetchUserPendingAction;
 
-export type UserActionType = (
-  accessToken: string
-) => void;
+export type UserActionType = (accessToken: string) => void;
 
 export interface UserState {
-  response: UserLogged,
-  userPending: boolean,
-  userError: boolean,
+  response: UserLogged;
+  userPending: boolean;
+  userError: boolean;
 }
 
+// artists
 export const FETCH_ARTISTS_SUCCESS = "FETCH_ARTISTS_SUCCESS";
 interface SearchArtistsSuccessAction {
   type: typeof FETCH_ARTISTS_SUCCESS;
-  payload: ArtistSearchResponse;
+  payload: ArtistsSearchResponse;
 }
 
 export const FETCH_ARTISTS_ERROR = "FETCH_ARTISTS_ERROR";
@@ -52,8 +61,6 @@ interface SearchArtistsPendingAction {
   type: typeof FETCH_ARTISTS_PENDING;
 }
 
-export type SearchArtistsActionTypes = SearchArtistsSuccessAction | SearchArtistsErrorAction | SearchArtistsPendingAction;
-
 export type SearchArtistsType = (
   accessToken: string,
   value: string,
@@ -61,16 +68,53 @@ export type SearchArtistsType = (
   offset?: number
 ) => void;
 
-export interface ArtistSearchState {
-  response: ArtistSearchResponse,
-  artistPending: boolean,
-  artistError: boolean,
+export interface ArtistsSearchState {
+  response: ArtistsSearchResponse;
+  artistsPending: boolean;
+  artistsError: boolean;
 }
 
+// artist
+export const FETCH_ARTIST_SUCCESS = "FETCH_ARTIST_SUCCESS";
+interface SearchArtistSuccessAction {
+  type: typeof FETCH_ARTIST_SUCCESS;
+  payload: Artist;
+}
+
+export const FETCH_ARTIST_ERROR = "FETCH_ARTIST_ERROR";
+interface SearchArtistErrorAction {
+  type: typeof FETCH_ARTIST_ERROR;
+}
+
+export const FETCH_ARTIST_PENDING = "FETCH_ARTIST_PENDING";
+interface SearchArtistPendingAction {
+  type: typeof FETCH_ARTIST_PENDING;
+}
+
+export type SearchArtistType = (
+  accessToken: string,
+  id: string
+) => void;
+
+export interface ArtistSearchState {
+  response: Artist;
+  artistPending: boolean;
+  artistError: boolean;
+}
+
+export type SearchArtistsActionTypes =
+  | SearchArtistsSuccessAction
+  | SearchArtistsErrorAction
+  | SearchArtistsPendingAction
+  | SearchArtistSuccessAction
+  | SearchArtistErrorAction
+  | SearchArtistPendingAction;
+
+// tracks
 export const FETCH_TRACKS_SUCCESS = "FETCH_TRACKS_SUCCESS";
 interface SearchTracksSuccessAction {
   type: typeof FETCH_TRACKS_SUCCESS;
-  payload: TrackSearchResponse;
+  payload: TracksSearchResponse;
 }
 
 export const FETCH_TRACKS_ERROR = "FETCH_TRACKS_ERROR";
@@ -83,7 +127,10 @@ interface SearchTracksPendingAction {
   type: typeof FETCH_TRACKS_PENDING;
 }
 
-export type SearchTracksActionTypes = SearchTracksSuccessAction | SearchTracksErrorAction | SearchTracksPendingAction;
+export type SearchTracksActionTypes =
+  | SearchTracksSuccessAction
+  | SearchTracksErrorAction
+  | SearchTracksPendingAction;
 
 export type SearchTracksType = (
   accessToken: string,
@@ -92,8 +139,8 @@ export type SearchTracksType = (
   offset?: number
 ) => void;
 
-export interface TrackSearchState {
-  response: TrackSearchResponse,
-  trackPending: boolean,
-  trackError: boolean,
+export interface TracksSearchState {
+  response: TracksSearchResponse;
+  tracksPending: boolean;
+  tracksError: boolean;
 }

@@ -10,7 +10,7 @@ interface TrackItemProps {
 const TrackItem: React.SFC<TrackItemProps> = ({ track }) => {
   const avatarUrl =
     track.album.images.length > 0
-      ? track.album.images[0].url
+      ? track.album.images.sort((a, b) => a.width - b.width)[0].url
       : "https://png.pngtree.com/svg/20161212/f93e57629c.svg";
 
   return (

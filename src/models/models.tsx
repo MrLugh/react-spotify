@@ -42,7 +42,7 @@ export interface Artist {
   uri: string;
 }
 
-export interface ArtistSearch {
+export interface ArtistsSearch {
   href: string;
   items: Artist[];
   limit: number;
@@ -52,8 +52,8 @@ export interface ArtistSearch {
   total: number;
 }
 
-export interface ArtistSearchResponse {
-  artists: ArtistSearch;
+export interface ArtistsSearchResponse {
+  artists: ArtistsSearch;
 }
 
 export interface Album {
@@ -90,7 +90,7 @@ export interface Track {
   uri: string;
 }
 
-export interface TrackSearch {
+export interface TracksSearch {
   href: string;
   items: Track[];
   limit: number;
@@ -100,6 +100,6 @@ export interface TrackSearch {
   total: number;
 }
 
-export interface TrackSearchResponse {
-  tracks: TrackSearch;
+export interface TracksSearchResponse {
+  tracks: TracksSearch;
 }

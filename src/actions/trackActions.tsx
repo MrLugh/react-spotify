@@ -1,4 +1,4 @@
-import { TrackSearchResponse } from "../models/models";
+import { TracksSearchResponse } from "../models/models";
 import {
   FETCH_TRACKS_SUCCESS,
   SearchTracksActionTypes,
@@ -9,7 +9,7 @@ import {
 import { SPOTIFY } from "../constants/api";
 
 export const searchTracksSuccess = (
-  search: TrackSearchResponse
+  search: TracksSearchResponse
 ): SearchTracksActionTypes => {
   return {
     type: FETCH_TRACKS_SUCCESS,

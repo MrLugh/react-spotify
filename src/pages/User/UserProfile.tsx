@@ -1,6 +1,7 @@
 import React from "react";
 import { UserState } from "../../store/types/actionTypes";
-import { Avatar, Button, Spin } from "antd";
+import { Avatar, Button } from "antd";
+import SpinLoader from "../../components/SpinLoader";
 
 interface UserProfileProps {
   user: UserState;
@@ -8,7 +9,7 @@ interface UserProfileProps {
 
 const UserProfile: React.SFC<UserProfileProps> = ({ user }) => {
   if (!user || user.userPending) {
-    return <Spin size="small" />;
+    return <SpinLoader />;
   }
 
   if (user.userError) {

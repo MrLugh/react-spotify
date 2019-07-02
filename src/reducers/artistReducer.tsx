@@ -1,13 +1,13 @@
 import {
-  FETCH_ARTISTS_SUCCESS,
+  FETCH_ARTIST_SUCCESS,
+  FETCH_ARTIST_PENDING,
+  FETCH_ARTIST_ERROR,
   SearchArtistsActionTypes,
-  FETCH_ARTISTS_PENDING,
-  FETCH_ARTISTS_ERROR,
 } from "../store/types/actionTypes";
 
 export const artistReducer = (state = {}, action: SearchArtistsActionTypes) => {
   switch (action.type) {
-    case FETCH_ARTISTS_SUCCESS:
+    case FETCH_ARTIST_SUCCESS:
       return {
         ...state,
         response: action.payload,
@@ -15,7 +15,7 @@ export const artistReducer = (state = {}, action: SearchArtistsActionTypes) => {
         artistError: false,
       };
 
-    case FETCH_ARTISTS_PENDING:
+    case FETCH_ARTIST_PENDING:
       return {
         ...state,
         response: {},
@@ -23,7 +23,7 @@ export const artistReducer = (state = {}, action: SearchArtistsActionTypes) => {
         artistError: false,
       };
 
-    case FETCH_ARTISTS_ERROR:
+    case FETCH_ARTIST_ERROR:
       return {
         ...state,
         response: {},

@@ -1,47 +1,48 @@
 import React from "react";
 import { Track } from "../../../models/models";
-import { TrackSearchState } from "../../../store/types/actionTypes";
+import { TracksSearchState } from "../../../store/types/actionTypes";
 import TrackItem from "./TrackItem";
-import { Input, Spin, Pagination } from "antd";
+import { Input, Pagination } from "antd";
+import SpinLoader from "../../../components/SpinLoader";
 
-interface TrackSearchProps {
+interface TracksSearchProps {
   searchValue: string;
-  trackSearch: TrackSearchState;
+  tracksSearch: TracksSearchState;
   onHandlerChange: (value: string) => void;
   onHandlerPageChange: (page: number) => void;
 }
 
-const TrackSearch: React.SFC<TrackSearchProps> = ({
+const TrackSearch: React.SFC<TracksSearchProps> = ({
   searchValue,
-  trackSearch,
+  tracksSearch,
   onHandlerChange,
   onHandlerPageChange,
 }) => {
   const renderTracks = () => {
-    if (!trackSearch) {
+    if (!tracksSearch) {
       return "type your favorite Tracks.";
     }
 
-    if (trackSearch.trackPending) {
-      return <Spin size="small" />;
+    if (tracksSearch.tracksPending) {
+      return <SpinLoader />;
     }
 
-    if (trackSearch.trackError) {
+    if (tracksSearch.tracksError) {
       return `Ups! There was a problem searching by ${searchValue}.`;
     }
 
-    if (!trackSearch.response.tracks.items.length) {
+    if (!tracksSearch.response.tracks.items.length) {
       return "there are no results!";
     }
 
-    return trackSearch.response.tracks.items
+    return tracksSearch.response.tracks.items
       .sort((a, b) => b.popularity - a.popularity)
       .map((track: Track, key: number) => <TrackItem key={key} track={track} />);
   };
 
   const getPageNumber = () => {
     const page = Math.ceil(
-      trackSearch.response.tracks.offset / trackSearch.response.tracks.limit
+      tracksSearch.response.tracks.offset / tracksSearch.response.tracks.limit
     );
     return page + 1;
   };
@@ -56,17 +57,17 @@ const TrackSearch: React.SFC<TrackSearchProps> = ({
       />
       <div className="content-page-tracks">{renderTracks()}</div>
       <div className="pagination">
-        {trackSearch &&
+        {tracksSearch &&
           searchValue.length > 0 &&
-          !trackSearch.trackPending &&
-          !trackSearch.trackError &&
-          trackSearch.response.tracks.items.length > 0 &&
-          trackSearch.response.tracks.total >
-            trackSearch.response.tracks.limit && (
+          !tracksSearch.tracksPending &&
+          !tracksSearch.tracksError &&
+          tracksSearch.response.tracks.items.length > 0 &&
+          tracksSearch.response.tracks.total >
+            tracksSearch.response.tracks.limit && (
             <Pagination
               simple
               defaultCurrent={getPageNumber()}
-              total={trackSearch.response.tracks.total}
+              total={tracksSearch.response.tracks.total}
               onChange={onHandlerPageChange}
             />
           )}

@@ -11,24 +11,24 @@ export const trackReducer = (state = {}, action: SearchTracksActionTypes) => {
       return {
         ...state,
         response: action.payload,
-        trackPending: false,
-        trackError: false,
+        tracksPending: false,
+        tracksError: false,
       };
 
     case FETCH_TRACKS_PENDING:
       return {
         ...state,
         response: {},
-        trackPending: true,
-        trackError: false,
+        tracksPending: true,
+        tracksError: false,
       };
 
     case FETCH_TRACKS_ERROR:
       return {
         ...state,
         response: {},
-        trackPending: false,
-        trackError: true,
+        tracksPending: false,
+        tracksError: true,
       };
 
     default:
