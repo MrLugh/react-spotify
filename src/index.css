@@ -117,7 +117,14 @@ a,
 
 .artist-card,
 .track-card {
+  opacity: 0.7;
+  transition: all 0.25s ease-in-out 0s;
   margin-bottom: 30px;
+}
+
+.artist-card:hover,
+.track-card:hover {
+  opacity: 1;
 }
 
 .artist-card .artist-card-image,
@@ -147,12 +154,6 @@ a,
   border-radius: 100%;
 }
 
-.artist-avatar img,
-.track-avatar img {
-  opacity: 0.7;
-  transition: all 0.25s ease-in-out 0s;
-}
-
 .artist-avatar:hover,
 .track-avatar:hover {
   transform: scale(1);
@@ -162,11 +163,6 @@ a,
 
 .artist-avatar:hover {
   border-width: 15px;
-}
-
-.artist-avatar:hover img,
-.track-avatar:hover img {
-  opacity: 1;
 }
 
 .artist-title,
