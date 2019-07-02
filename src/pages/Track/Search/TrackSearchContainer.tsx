@@ -7,6 +7,7 @@ import {
   TrackSearchState,
 } from "../../../store/types/actionTypes";
 import TracksSearch from "./TracksSearch";
+import { debounce } from "lodash";
 
 interface TrackSearchContainerProps {
   token: string;
@@ -16,6 +17,11 @@ interface TrackSearchContainerProps {
 
 class TrackSearchContainer extends React.Component<TrackSearchContainerProps> {
   state = { search: "", offset: 0 };
+
+  constructor(props: TrackSearchContainerProps) {
+    super(props);
+    this.searchTracks = debounce(this.searchTracks, 500);
+  }  
 
   searchTracks() {
     if (this.state.search.length > 0) {

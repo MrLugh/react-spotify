@@ -7,6 +7,7 @@ import {
   ArtistSearchState,
 } from "../../../store/types/actionTypes";
 import ArtistsSearch from "./ArtistsSearch";
+import { debounce } from "lodash";
 
 interface ArtistSearchContainerProps {
   token: string;
@@ -18,6 +19,11 @@ class ArtistSearchContainer extends React.Component<
   ArtistSearchContainerProps
 > {
   state = { search: "", offset: 0 };
+
+  constructor(props: ArtistSearchContainerProps) {
+    super(props);
+    this.searchArtists = debounce(this.searchArtists, 500);
+  }
 
   searchArtists() {
     if (this.state.search.length > 0) {
