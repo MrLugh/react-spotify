@@ -1,5 +1,5 @@
 import React from "react";
-import { ArtistAlbumsState } from "../store/types/actionTypes";
+import { ArtistAlbumsState, SetPlayerActionType } from "../store/types/actionTypes";
 import SpinLoader from "./SpinLoader";
 import { Pagination, Row, Col } from "antd";
 import AlbumItem from "./AlbumItem";
@@ -7,11 +7,13 @@ import AlbumItem from "./AlbumItem";
 interface ArtistAlbumsProps {
   artistAlbums: ArtistAlbumsState;
   onHandlerPageChange: (page: number) => void;
+  setPlayer: SetPlayerActionType;
 }
 
 const ArtistAlbums: React.SFC<ArtistAlbumsProps> = ({
   artistAlbums,
   onHandlerPageChange,
+  setPlayer,
 }) => {
   const getPageNumber = () => {
     const page = Math.ceil(
@@ -38,7 +40,7 @@ const ArtistAlbums: React.SFC<ArtistAlbumsProps> = ({
         <Row gutter={16}>
           {artistAlbums.response.items.map((album, key) => (
             <Col key={key} span={8}>
-              <AlbumItem album={album} />
+              <AlbumItem album={album} setPlayer={setPlayer}/>
             </Col>
           ))}
         </Row>

@@ -4,6 +4,7 @@ import {
   SearchArtistType,
   SearchArtistAlbumsType,
   ArtistAlbumsState,
+  SetPlayerActionType,
 } from "../store/types/actionTypes";
 import { RouteComponentProps } from "react-router";
 import SpinLoader from "./SpinLoader";
@@ -21,6 +22,7 @@ interface ArtistProps extends RouteComponentProps<ArtistRouterProps> {
   searchArtist: SearchArtistType;
   artistAlbums: ArtistAlbumsState;
   searchArtistAlbums: SearchArtistAlbumsType;
+  setPlayer: SetPlayerActionType
 }
 
 class Artist extends React.Component<ArtistProps> {
@@ -83,6 +85,7 @@ class Artist extends React.Component<ArtistProps> {
           <ArtistAlbums
             artistAlbums={this.props.artistAlbums}
             onHandlerPageChange={this.handlePageChange}
+            setPlayer={this.props.setPlayer}
           />
         </div>
       </div>

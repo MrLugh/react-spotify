@@ -1,13 +1,15 @@
 import React from "react";
 import { Album } from "../models/models";
-import { Avatar } from "antd";
+import { Avatar, Button } from "antd";
 import { DEFAULT_ALBUM_AVATAR_IMAGE_URL } from "../constants/api";
+import { SetPlayerActionType } from "../store/types/actionTypes";
 
 interface AlbumItemProps {
   album: Album;
+  setPlayer: SetPlayerActionType
 }
 
-const AlbumItem: React.SFC<AlbumItemProps> = ({ album }) => {
+const AlbumItem: React.SFC<AlbumItemProps> = ({ album, setPlayer }) => {
   const avatarUrl =
     album.images.length > 0
       ? album.images.sort((a, b) => b.width - a.width)[0].url
@@ -29,6 +31,7 @@ const AlbumItem: React.SFC<AlbumItemProps> = ({ album }) => {
           <li>{album.release_date}</li>
           <li>Tracks {album.total_tracks}</li>
           <li>{album.type}</li>
+          <li><Button type="link" onClick={() => setPlayer(album.uri)}>Play album</Button></li>
         </ul>
       </div>
     </div>
