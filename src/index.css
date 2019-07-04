@@ -66,6 +66,13 @@ a,
   color: #84be88;
 }
 
+
+.sidebar .ant-menu-item > a { 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;  
+}
+
 .page-container {
   min-height: 100vh;
 }
