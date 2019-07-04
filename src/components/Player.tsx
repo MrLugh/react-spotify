@@ -7,8 +7,7 @@ interface PlayerProps {
 
 const Player: React.SFC<PlayerProps> = ({ player }) => {
   const iframe = () => {
-    const str = `<iframe src="${SPOTIFY.player}?uri=${player}" width="100%" height="350px" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
-    console.log(str);
+    const str = `<iframe src="${SPOTIFY.player}?uri=${player}" width="100%" height="80px" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
     return {
       __html: str,
     };

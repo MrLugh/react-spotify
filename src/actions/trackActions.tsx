@@ -5,6 +5,7 @@ import {
   SearchTracksType,
   FETCH_TRACKS_PENDING,
   FETCH_TRACKS_ERROR,
+  FETCH_TRACKS_RESET,
 } from "../store/types/actionTypes";
 import { SPOTIFY } from "../constants/api";
 
@@ -14,6 +15,12 @@ export const searchTracksSuccess = (
   return {
     type: FETCH_TRACKS_SUCCESS,
     payload: search,
+  };
+};
+
+export const searchTracksReset = (): SearchTracksActionTypes => {
+  return {
+    type: FETCH_TRACKS_RESET,
   };
 };
 

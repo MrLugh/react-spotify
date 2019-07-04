@@ -127,10 +127,16 @@ interface SearchTracksPendingAction {
   type: typeof FETCH_TRACKS_PENDING;
 }
 
+export const FETCH_TRACKS_RESET = "FETCH_TRACKS_RESET";
+interface SearchTracksResetAction {
+  type: typeof FETCH_TRACKS_RESET;
+}
+
 export type SearchTracksActionTypes =
   | SearchTracksSuccessAction
   | SearchTracksErrorAction
-  | SearchTracksPendingAction;
+  | SearchTracksPendingAction
+  | SearchTracksResetAction;
 
 export type SearchTracksType = (
   accessToken: string,
@@ -146,6 +152,11 @@ export interface TracksSearchState {
 }
 
 // albums
+export const FETCH_ARTIST_ALBUMS_RESET = "FETCH_ARTIST_ALBUMS_RESET";
+interface SearchArtistAlbumsResetAction {
+  type: typeof FETCH_ARTIST_ALBUMS_RESET;
+}
+
 export const FETCH_ARTIST_ALBUMS_SUCCESS = "FETCH_ARTIST_ALBUMS_SUCCESS";
 interface SearchArtistAlbumsSuccessAction {
   type: typeof FETCH_ARTIST_ALBUMS_SUCCESS;
@@ -165,7 +176,8 @@ interface SearchArtistAlbumsPendingAction {
 export type SearchArtistAlbumsActionTypes =
   | SearchArtistAlbumsSuccessAction
   | SearchArtistAlbumsErrorAction
-  | SearchArtistAlbumsPendingAction;
+  | SearchArtistAlbumsPendingAction
+  | SearchArtistAlbumsResetAction;
 
 export type SearchArtistAlbumsType = (
   accessToken: string,

@@ -24,7 +24,7 @@ class TrackSearchContainer extends React.Component<TracksSearchContainerProps> {
   constructor(props: TracksSearchContainerProps) {
     super(props);
     this.searchTracks = debounce(this.searchTracks, 500);
-  }  
+  }
 
   searchTracks() {
     if (this.state.search.length > 0) {

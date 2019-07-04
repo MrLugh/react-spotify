@@ -39,7 +39,7 @@ const ArtistAlbums: React.SFC<ArtistAlbumsProps> = ({
       <div>
         <Row gutter={16}>
           {artistAlbums.response.items.map((album, key) => (
-            <Col key={key} span={8}>
+            <Col key={key} span={12}>
               <AlbumItem album={album} setPlayer={setPlayer}/>
             </Col>
           ))}

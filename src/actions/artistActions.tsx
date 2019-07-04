@@ -9,6 +9,7 @@ import {
   FETCH_ARTIST_PENDING,
   SearchArtistType,
   SearchArtistAlbumsActionTypes,
+  FETCH_ARTIST_ALBUMS_RESET,
   FETCH_ARTIST_ALBUMS_SUCCESS,
   FETCH_ARTIST_ALBUMS_PENDING,
   SearchArtistAlbumsType,
@@ -141,6 +142,12 @@ export const searchArtistAlbumsSuccess = (
   };
 };
 
+export const searchArtistAlbumsReset = (): SearchArtistAlbumsActionTypes => {
+  return {
+    type: FETCH_ARTIST_ALBUMS_RESET,
+  };
+};
+
 export const searchArtistAlbumsPending = (): SearchArtistAlbumsActionTypes => {
   return {
     type: FETCH_ARTIST_ALBUMS_PENDING,
@@ -163,7 +170,6 @@ export const searchArtistAlbums: SearchArtistAlbumsType = (
 ) => {
   return (dispatch: CallableFunction) => {
     const url = `${SPOTIFY.api}/artists/${id}/albums?limit=${limit}&offset=${offset}`;
-    console.log(url);
     const request = new Request(url, {
       headers: new Headers({
         Authorization: "Bearer " + accessToken,

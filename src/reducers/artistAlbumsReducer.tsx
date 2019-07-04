@@ -3,6 +3,7 @@ import {
   FETCH_ARTIST_ALBUMS_PENDING,
   FETCH_ARTIST_ALBUMS_ERROR,
   SearchArtistAlbumsActionTypes,
+  FETCH_ARTIST_ALBUMS_RESET,
 } from "../store/types/actionTypes";
 
 export const artistAlbumsReducer = (
@@ -33,6 +34,9 @@ export const artistAlbumsReducer = (
         artistAlbumsPending: false,
         artistAlbumsError: true,
       };
+
+    case FETCH_ARTIST_ALBUMS_RESET:
+      return null;
 
     default:
       return state;
