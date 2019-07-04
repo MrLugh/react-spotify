@@ -1,9 +1,9 @@
 import React from "react";
-import { Artist } from "../../../models/models";
-import { ArtistsSearchState } from "../../../store/types/actionTypes";
+import { Artist } from "../models/models";
+import { ArtistsSearchState } from "../store/types/actionTypes";
 import ArtistItem from "./ArtistItem";
 import { Input, Pagination } from "antd";
-import SpinLoader from "../../../components/SpinLoader";
+import SpinLoader from "./SpinLoader";
 
 interface ArtistSearchProps {
   searchValue: string;
@@ -37,7 +37,9 @@ const ArtistSearch: React.SFC<ArtistSearchProps> = ({
 
     return artistSearch.response.artists.items
       .sort((a, b) => b.popularity - a.popularity)
-      .map((artist: Artist, key: number) => <ArtistItem key={key} artist={artist} />);
+      .map((artist: Artist, key: number) => (
+        <ArtistItem key={key} artist={artist} />
+      ));
   };
 
   const getPageNumber = () => {

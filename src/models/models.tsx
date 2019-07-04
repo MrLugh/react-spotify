@@ -57,6 +57,7 @@ export interface ArtistsSearchResponse {
 }
 
 export interface Album {
+  album_group: string;
   album_type: string;
   artists: Artist[];
   external_urls: ExternalUrl;
@@ -102,4 +103,14 @@ export interface TracksSearch {
 
 export interface TracksSearchResponse {
   tracks: TracksSearch;
+}
+
+export interface ArtistAlbums {
+  href: string;
+  items: Album[];
+  limit: number;
+  next: string;
+  offset: number;
+  previous: string;
+  total: number;
 }

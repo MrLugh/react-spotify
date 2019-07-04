@@ -11,6 +11,7 @@ const initialState = {
   user: null,
   tracks: null,
   artist: null,
+  artistAlbums: null,
 };
 
 const store = configureStore(initialState);

@@ -1,9 +1,9 @@
 import React from "react";
-import { Track } from "../../../models/models";
-import { TracksSearchState } from "../../../store/types/actionTypes";
+import { Track } from "../models/models";
+import { TracksSearchState } from "../store/types/actionTypes";
 import TrackItem from "./TrackItem";
 import { Input, Pagination } from "antd";
-import SpinLoader from "../../../components/SpinLoader";
+import SpinLoader from "./SpinLoader";
 
 interface TracksSearchProps {
   searchValue: string;

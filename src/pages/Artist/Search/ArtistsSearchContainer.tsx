@@ -6,7 +6,7 @@ import {
   SearchArtistsType,
   ArtistsSearchState,
 } from "../../../store/types/actionTypes";
-import ArtistsSearch from "./ArtistsSearch";
+import ArtistsSearch from "../../../components/ArtistsSearch";
 import { debounce } from "lodash";
 
 interface ArtistsSearchContainerProps {

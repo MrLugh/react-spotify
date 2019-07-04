@@ -3,6 +3,7 @@ import tokenReducer from "./tokenReducer";
 import userReducer from "./userReducer";
 import artistsReducer from "./artistsReducer";
 import artistReducer from "./artistReducer";
+import artistAlbumsReducer from "./artistAlbumsReducer";
 import trackReducer from "./trackReducer";
 
 export default combineReducers({
@@ -11,4 +12,5 @@ export default combineReducers({
   artists: artistsReducer,
   artist: artistReducer,
   tracks: trackReducer,
+  artistAlbums: artistAlbumsReducer,
 });

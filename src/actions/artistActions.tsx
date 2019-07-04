@@ -1,4 +1,4 @@
-import { ArtistsSearchResponse, Artist } from "../models/models";
+import { ArtistsSearchResponse, Artist, ArtistAlbums } from "../models/models";
 import {
   FETCH_ARTISTS_SUCCESS,
   SearchArtistsActionTypes,
@@ -8,6 +8,11 @@ import {
   FETCH_ARTIST_SUCCESS,
   FETCH_ARTIST_PENDING,
   SearchArtistType,
+  SearchArtistAlbumsActionTypes,
+  FETCH_ARTIST_ALBUMS_SUCCESS,
+  FETCH_ARTIST_ALBUMS_PENDING,
+  SearchArtistAlbumsType,
+  FETCH_ARTIST_ALBUMS_ERROR,
 } from "../store/types/actionTypes";
 import { SPOTIFY } from "../constants/api";
 
@@ -65,7 +70,8 @@ export const searchArtists: SearchArtistsType = (
       })
       .then((res) => {
         dispatch(searchArtistsSuccess(res));
-      }).catch(err => {
+      })
+      .catch((err) => {
         dispatch(searchArtistsError(err));
       });
   };
@@ -94,12 +100,10 @@ export const searchArtistError = (err: Error): SearchArtistsActionTypes => {
 
 export const searchArtist: SearchArtistType = (
   accessToken: string,
-  id: string,
+  id: string
 ) => {
   return (dispatch: CallableFunction) => {
-    const url = `${
-      SPOTIFY.api
-    }/artists/${id}`;
+    const url = `${SPOTIFY.api}/artists/${id}`;
     const request = new Request(url, {
       headers: new Headers({
         Authorization: "Bearer " + accessToken,
@@ -121,8 +125,69 @@ export const searchArtist: SearchArtistType = (
       })
       .then((res) => {
         dispatch(searchArtistSuccess(res));
-      }).catch(err => {
+      })
+      .catch((err) => {
         dispatch(searchArtistError(err));
+      });
+  };
+};
+
+export const searchArtistAlbumsSuccess = (
+  search: ArtistAlbums
+): SearchArtistAlbumsActionTypes => {
+  return {
+    type: FETCH_ARTIST_ALBUMS_SUCCESS,
+    payload: search,
+  };
+};
+
+export const searchArtistAlbumsPending = (): SearchArtistAlbumsActionTypes => {
+  return {
+    type: FETCH_ARTIST_ALBUMS_PENDING,
+  };
+};
+
+export const searchArtistAlbumsError = (
+  err: Error
+): SearchArtistAlbumsActionTypes => {
+  return {
+    type: FETCH_ARTIST_ALBUMS_ERROR,
+  };
+};
+
+export const searchArtistAlbums: SearchArtistAlbumsType = (
+  accessToken: string,
+  id: string,
+  limit: number = 10,
+  offset: number = 0
+) => {
+  return (dispatch: CallableFunction) => {
+    const url = `${SPOTIFY.api}/artists/${id}/albums?limit=${limit}&offset=${offset}`;
+    console.log(url);
+    const request = new Request(url, {
+      headers: new Headers({
+        Authorization: "Bearer " + accessToken,
+      }),
+    });
+
+    dispatch(searchArtistAlbumsPending());
+
+    fetch(request)
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        if (res.status === 401) {
+          window.location.href = "./";
+          return;
+        }
+        throw Error(res.statusText);
+      })
+      .then((res) => {
+        dispatch(searchArtistAlbumsSuccess(res));
+      })
+      .catch((err) => {
+        dispatch(searchArtistAlbumsError(err));
       });
   };
 };

@@ -12,6 +12,10 @@ body {
   font-family: "Proxima Thin", Georgia, sans-serif;
 }
 
+.center {
+  text-align: center;
+}
+
 a,
 .ant-btn-link {
   color: #84be88;
@@ -30,7 +34,7 @@ a,
 .header {
   background: #181818;
   color: #fefefe;
-  padding: 0 30px;
+  padding: 0 32px;
 }
 
 .sidebar {
@@ -67,12 +71,13 @@ a,
 }
 
 .content-main {
+  position: relative;
   min-height: 100vh;
   color: #fff;
 }
 
 .content-page-profile {
-  padding-top: 30px;
+  padding-top: 32px;
   min-height: 100vh;
   display: flex;
   text-align: center;
@@ -100,7 +105,7 @@ a,
 
 .content-page-artists,
 .content-page-tracks {
-  padding: 30px;
+  padding: 32px;
   height: calc(100% - 128px);
   margin: 64px 0;
   overflow: auto;
@@ -112,14 +117,13 @@ a,
   font-weight: bold;
   color: #fff;
   text-transform: uppercase;
-  margin: 30px 0;
+  margin: 32px 0;
 }
 
-.artist-card,
-.track-card {
+.card {
   opacity: 0.7;
   transition: all 0.25s ease-in-out 0s;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 }
 
 .artist-card:hover,
@@ -139,8 +143,26 @@ a,
   margin-bottom: 0px;
 }
 
-.artist-avatar,
-.track-avatar {
+.album-card {
+  opacity: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.album-card-info {
+  opacity: 0.7;
+  margin-left: 16px;
+}
+
+.album-card:hover .album-card-info {
+  opacity: 1;
+}
+
+.album-card-info .album-title {
+  color: #fff;
+}
+
+.avatar {
   border-radius: 0;
   border-color: #84be88 #2a3137;
   border-style: solid;
@@ -154,8 +176,13 @@ a,
   border-radius: 100%;
 }
 
-.artist-avatar:hover,
-.track-avatar:hover {
+.album-avatar {
+  transform: scale(1);
+  border-width: 1px;
+  border-color: #181818;
+}
+
+.avatar:hover {
   transform: scale(1);
   background: transparent;
   box-shadow: 0 0 20px 6px rgba(132, 190, 136, 0.8);
@@ -167,7 +194,7 @@ a,
 
 .artist-title,
 .track-title,
-.album-title {
+.artist-card .album-title {
   font-family: "Proxima Bold";
   margin-left: 16px;
   color: #fff;
@@ -176,7 +203,7 @@ a,
   text-transform: uppercase;
 }
 
-.album-title {
+.artist-card .album-title {
   margin-left: 0;
   font-size: 14px;
   font-family: "Proxima Thin";
@@ -189,7 +216,7 @@ a,
 }
 
 .content-page-artist {
-  padding: 30px;
+  padding: 32px;
 }
 
 .header-page-artist {
@@ -197,16 +224,28 @@ a,
 }
 
 .header-page-artist .cover {
-  height: 100%;
+  height: 200px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 1;
-  transition: all 0.25s ease-in-out 0s;
+  opacity: 0.3;
+  transition: all 1s ease-in-out 0s;
 }
 
 .header-page-artist .cover:hover {
-  opacity: 0.5;
+  background-position: top center;
+  opacity: 1;
+}
+
+.header-page-artist .artist-title {
+  text-align: center;
+  font-size: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .footer {
@@ -224,7 +263,7 @@ a,
   box-shadow: 0 0 16px 5px #181818;
   border: none;
   border-radius: 0;
-  padding: 32px 30px;
+  padding: 32px;
   font-size: 26px;
   line-height: 44px;
   letter-spacing: -0.005em;

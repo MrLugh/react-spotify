@@ -2,9 +2,14 @@ import React from "react";
 import {
   ArtistSearchState,
   SearchArtistType,
+  SearchArtistAlbumsType,
+  ArtistAlbumsState,
 } from "../store/types/actionTypes";
 import { RouteComponentProps } from "react-router";
 import SpinLoader from "./SpinLoader";
+import ArtistAlbums from "./ArtistAlbums";
+import { debounce } from "lodash";
+import { DEFAULT_PERSON_AVATAR_IMAGE_URL } from "../constants/api";
 
 interface ArtistRouterProps {
   id: string;
@@ -14,12 +19,37 @@ interface ArtistProps extends RouteComponentProps<ArtistRouterProps> {
   token: string;
   artistSearch: ArtistSearchState;
   searchArtist: SearchArtistType;
+  artistAlbums: ArtistAlbumsState;
+  searchArtistAlbums: SearchArtistAlbumsType;
 }
 
 class Artist extends React.Component<ArtistProps> {
+  state = { offset: 0 };
+
+  constructor(props: any) {
+    super(props);
+    this.searchArtistAlbums = debounce(this.searchArtistAlbums, 500);
+  }
+
+  searchArtistAlbums() {
+    if (this.props.match.params.id) {
+      this.props.searchArtistAlbums(
+        this.props.token,
+        this.props.match.params.id,
+        8,
+        this.state.offset
+      );
+    }
+  }
+
   componentDidMount() {
     this.props.searchArtist(this.props.token, this.props.match.params.id);
+    this.searchArtistAlbums();
   }
+
+  handlePageChange = (page: number) => {
+    this.setState({ offset: (page - 1) * 8 }, this.searchArtistAlbums);
+  };
 
   render() {
     if (!this.props.artistSearch || this.props.artistSearch.artistPending) {
@@ -27,22 +57,34 @@ class Artist extends React.Component<ArtistProps> {
     }
 
     if (this.props.artistSearch.artistError) {
-      return `Ups! There was a problem fetching Artist.`;
+      return <span>Ups! There was a problem fetching Artist.</span>;
     }
 
     const artist = this.props.artistSearch.response;
 
     const avatarUrl =
-    artist.images.length > 0
-      ? artist.images.sort((a, b) => b.width - a.width)[0].url
-      : "https://png.pngtree.com/svg/20161212/f93e57629c.svg";
+      artist.images.length > 0
+        ? artist.images.sort((a, b) => b.width - a.width)[0].url
+        : DEFAULT_PERSON_AVATAR_IMAGE_URL;
 
     return (
       <div className="content-main">
         <div className="header-page-artist">
-          <div className="cover" style={{backgroundImage:`url(${avatarUrl})`}}></div>
+          <div
+            className="cover"
+            style={{ backgroundImage: `url(${avatarUrl})` }}
+          ></div>
+          <h3 className="artist-title">{artist.name}</h3>
+          {artist.genres.length > 0 && (
+            <p className="center">{artist.genres.join(" | ")}</p>
+          )}
         </div>
-        <div className="content-page-artist">Artist</div>
+        <div className="content-page-artist">
+          <ArtistAlbums
+            artistAlbums={this.props.artistAlbums}
+            onHandlerPageChange={this.handlePageChange}
+          />
+        </div>
       </div>
     );
   }

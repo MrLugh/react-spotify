@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Redirect, Switch } from "react-router-dom";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
 import UserProfileContainer from "../User/UserProfileContainer";
 import ArtistsSearchContainer from "../Artist/Search/ArtistsSearchContainer";
-import ArtistSearchContainer from "../Artist/ArtistContainer";
+import ArtistContainer from "../Artist/ArtistContainer";
 import TracksSearchContainer from "../Track/Search/TracksSearchContainer";
 
 interface HomeProps {}
 
-const Home: React.SFC<HomeProps> = (props) => {
+const Home: React.SFC<HomeProps> = () => {
   return (
     <Router>
       <Switch>
@@ -21,7 +21,7 @@ const Home: React.SFC<HomeProps> = (props) => {
         <DefaultLayout
           exact
           path="/artists/:id"
-          component={ArtistSearchContainer}
+          component={ArtistContainer}
         />
         <DefaultLayout exact path="/songs" component={TracksSearchContainer} />
         <Redirect to="/" />

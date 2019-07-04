@@ -2,6 +2,7 @@ import React from "react";
 import { UserState } from "../../store/types/actionTypes";
 import { Avatar, Button } from "antd";
 import SpinLoader from "../../components/SpinLoader";
+import { DEFAULT_PERSON_AVATAR_IMAGE_URL } from "../../constants/api";
 
 interface UserProfileProps {
   user: UserState;
@@ -19,13 +20,13 @@ const UserProfile: React.SFC<UserProfileProps> = ({ user }) => {
   const avatarUrl =
     user.response.images.length > 0
       ? user.response.images[0].url
-      : "https://png.pngtree.com/svg/20161212/f93e57629c.svg";
+      : DEFAULT_PERSON_AVATAR_IMAGE_URL;
 
   return (
     <div className="content-main">
       <div className="content-page-profile">
         <Avatar
-          className="artist-avatar me-avatar"
+          className="avatar artist-avatar me-avatar"
           size={256}
           src={avatarUrl}
         />

@@ -3,6 +3,7 @@ import {
   ArtistsSearchResponse,
   TracksSearchResponse,
   Artist,
+  ArtistAlbums,
 } from "../../models/models";
 
 // token
@@ -143,4 +144,39 @@ export interface TracksSearchState {
   response: TracksSearchResponse;
   tracksPending: boolean;
   tracksError: boolean;
+}
+
+// albums
+export const FETCH_ARTIST_ALBUMS_SUCCESS = "FETCH_ARTIST_ALBUMS_SUCCESS";
+interface SearchArtistAlbumsSuccessAction {
+  type: typeof FETCH_ARTIST_ALBUMS_SUCCESS;
+  payload: ArtistAlbums;
+}
+
+export const FETCH_ARTIST_ALBUMS_ERROR = "FETCH_ARTIST_ALBUMS_ERROR";
+interface SearchArtistAlbumsErrorAction {
+  type: typeof FETCH_ARTIST_ALBUMS_ERROR;
+}
+
+export const FETCH_ARTIST_ALBUMS_PENDING = "FETCH_ARTIST_ALBUMS_PENDING";
+interface SearchArtistAlbumsPendingAction {
+  type: typeof FETCH_ARTIST_ALBUMS_PENDING;
+}
+
+export type SearchArtistAlbumsActionTypes =
+  | SearchArtistAlbumsSuccessAction
+  | SearchArtistAlbumsErrorAction
+  | SearchArtistAlbumsPendingAction;
+
+export type SearchArtistAlbumsType = (
+  accessToken: string,
+  id: string,
+  limit?: number,
+  offset?: number
+) => void;
+
+export interface ArtistAlbumsState {
+  response: ArtistAlbums;
+  artistAlbumsPending: boolean;
+  artistAlbumsError: boolean;
 }

@@ -6,7 +6,7 @@ import {
   SearchTracksType,
   TracksSearchState,
 } from "../../../store/types/actionTypes";
-import TracksSearch from "./TracksSearch";
+import TracksSearch from "../../../components/TracksSearch";
 import { debounce } from "lodash";
 
 interface TracksSearchContainerProps {
