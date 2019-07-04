@@ -1,14 +1,16 @@
 import React from "react";
 import { Track } from "../models/models";
 import { Link } from "react-router-dom";
-import { Avatar } from "antd";
+import { Avatar, Button } from "antd";
 import { DEFAULT_ALBUM_AVATAR_IMAGE_URL } from "../constants/api";
+import { SetPlayerActionType } from "../store/types/actionTypes";
 
 interface TrackItemProps {
   track: Track;
+  setPlayer: SetPlayerActionType;
 }
 
-const TrackItem: React.SFC<TrackItemProps> = ({ track }) => {
+const TrackItem: React.SFC<TrackItemProps> = ({ track, setPlayer }) => {
   const avatarUrl =
     track.album.images.length > 0
       ? track.album.images.sort((a, b) => a.width - b.width)[0].url
@@ -34,6 +36,8 @@ const TrackItem: React.SFC<TrackItemProps> = ({ track }) => {
             </li>
             <li>Album {track.album.name}</li>
             <li>track number {track.track_number}</li>
+            <li><Button type="link" onClick={() => setPlayer(track.uri)}>Play track</Button></li>
+            <li><Button type="link" onClick={() => setPlayer(track.album.uri)}>Play album</Button></li>
           </ul>
         </div>
       </div>

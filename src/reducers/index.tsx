@@ -5,6 +5,7 @@ import artistsReducer from "./artistsReducer";
 import artistReducer from "./artistReducer";
 import artistAlbumsReducer from "./artistAlbumsReducer";
 import trackReducer from "./trackReducer";
+import playerReducer from "./playerReducer";
 
 export default combineReducers({
   token: tokenReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   artist: artistReducer,
   tracks: trackReducer,
   artistAlbums: artistAlbumsReducer,
+  player: playerReducer,
 });

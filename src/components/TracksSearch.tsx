@@ -1,6 +1,6 @@
 import React from "react";
 import { Track } from "../models/models";
-import { TracksSearchState } from "../store/types/actionTypes";
+import { TracksSearchState, SetPlayerActionType } from "../store/types/actionTypes";
 import TrackItem from "./TrackItem";
 import { Input, Pagination } from "antd";
 import SpinLoader from "./SpinLoader";
@@ -8,6 +8,7 @@ import SpinLoader from "./SpinLoader";
 interface TracksSearchProps {
   searchValue: string;
   tracksSearch: TracksSearchState;
+  setPlayer: SetPlayerActionType;
   onHandlerChange: (value: string) => void;
   onHandlerPageChange: (page: number) => void;
 }
@@ -15,6 +16,7 @@ interface TracksSearchProps {
 const TrackSearch: React.SFC<TracksSearchProps> = ({
   searchValue,
   tracksSearch,
+  setPlayer,
   onHandlerChange,
   onHandlerPageChange,
 }) => {
@@ -37,7 +39,7 @@ const TrackSearch: React.SFC<TracksSearchProps> = ({
 
     return tracksSearch.response.tracks.items
       .sort((a, b) => b.popularity - a.popularity)
-      .map((track: Track, key: number) => <TrackItem key={key} track={track} />);
+      .map((track: Track, key: number) => <TrackItem key={key} track={track} setPlayer={setPlayer}/>);
   };
 
   const getPageNumber = () => {

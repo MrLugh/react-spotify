@@ -27,7 +27,7 @@ a,
 }
 
 .layout-content {
-  margin-left: 200px;
+  margin-left: 250px;
   background: rgba(0, 0, 0, 0.8);
 }
 
@@ -42,6 +42,9 @@ a,
   position: fixed;
   left: 0;
   background: #181818;
+  max-width: 250px !important;
+  min-width: 250px !important;
+  width: 250px !important;
 }
 
 .sidebar .logo {
@@ -66,11 +69,15 @@ a,
   color: #84be88;
 }
 
-
-.sidebar .ant-menu-item > a { 
+.sidebar .ant-menu-item > a {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;  
+  white-space: nowrap;
+}
+
+.sidebar .player {
+  position: absolute;
+  bottom: 0;
 }
 
 .page-container {
@@ -261,7 +268,7 @@ a,
 
 .search {
   position: fixed;
-  left: 200px;
+  left: 250px;
   top: 0;
   z-index: 1;
   font-family: "Proxima Nova";
@@ -286,7 +293,7 @@ a,
   bottom: 0;
   z-index: 1;
   padding: 20px;
-  width: calc(100% - 200px);
+  width: calc(100% - 250px);
   height: 64px;
   color: #fff;
   text-align: center;

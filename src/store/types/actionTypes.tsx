@@ -13,6 +13,8 @@ interface SetTokenAction {
   payload: string;
 }
 
+export type SetTokenActionType = (url: string) => void;
+
 export type TokenActionTypes = SetTokenAction;
 
 // user
@@ -92,10 +94,7 @@ interface SearchArtistPendingAction {
   type: typeof FETCH_ARTIST_PENDING;
 }
 
-export type SearchArtistType = (
-  accessToken: string,
-  id: string
-) => void;
+export type SearchArtistType = (accessToken: string, id: string) => void;
 
 export interface ArtistSearchState {
   response: Artist;
@@ -180,3 +179,14 @@ export interface ArtistAlbumsState {
   artistAlbumsPending: boolean;
   artistAlbumsError: boolean;
 }
+
+// player
+export const SET_PLAYER = "SET_PLAYER";
+interface SetPlayerAction {
+  type: typeof SET_PLAYER;
+  payload: string;
+}
+
+export type SetPlayerActionType = (url: string) => void;
+
+export type SetPlayerActionTypes = SetPlayerAction;

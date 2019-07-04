@@ -6,6 +6,18 @@ import { fetchUser } from "../../actions/userActions";
 import { SPOTIFY } from "../../constants/api";
 import SpinLoader from "../../components/SpinLoader";
 import Home from "./Home";
+import {
+  SetTokenActionType,
+  UserActionType,
+  UserState,
+} from "../../store/types/actionTypes";
+
+interface HomeContainerProps {
+  user: UserState;
+  token: string;
+  setToken: SetTokenActionType;
+  fetchUser: UserActionType;
+}
 
 class HomeContainer extends React.Component<any, any> {
   componentDidMount() {
@@ -29,7 +41,7 @@ class HomeContainer extends React.Component<any, any> {
     if (!this.props.token || !this.props.user) {
       return <SpinLoader />;
     }
-    return <Home/>
+    return <Home />;
   }
 }
 

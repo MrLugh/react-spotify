@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Layout, Menu, Icon } from "antd";
 import logo from "../../assets/img/cloudcial-horizontal-white.png";
 import { ArtistSearchState } from "../../store/types/actionTypes";
+import Player from "../Player";
 const { Sider } = Layout;
 
 interface RouterProps {
@@ -14,6 +15,7 @@ interface RouterProps {
 
 interface SidebarProps extends RouteComponentProps<RouterProps> {
   artistSearch: ArtistSearchState;
+  player: string;
 }
 
 class Sidebar extends React.Component<SidebarProps> {
@@ -72,6 +74,11 @@ class Sidebar extends React.Component<SidebarProps> {
             </Menu.Item>
           )}
         </Menu>
+        {this.props.player && (
+          <div className="player">
+            <Player player={this.props.player} />
+          </div>
+        )}
       </Sider>
     );
   }
@@ -80,6 +87,7 @@ class Sidebar extends React.Component<SidebarProps> {
 const mapStateToProps = (state: any) => {
   return {
     artistSearch: state.artist,
+    player: state.player && state.player.player ? state.player.player : "",
   };
 };
 

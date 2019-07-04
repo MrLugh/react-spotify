@@ -12,13 +12,14 @@ const initialState = {
   tracks: null,
   artist: null,
   artistAlbums: null,
+  player: null,
 };
 
 const store = configureStore(initialState);
 
 ReactDOM.render(
   <Provider store={store}>
-    <HomeContainer />
+    <HomeContainer/>
   </Provider>,
   document.getElementById("root")
 );

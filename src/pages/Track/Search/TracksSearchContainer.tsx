@@ -2,9 +2,11 @@ import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { searchTracks } from "../../../actions/trackActions";
+import { setPlayer } from "../../../actions/playerActions";
 import {
   SearchTracksType,
   TracksSearchState,
+  SetPlayerActionType,
 } from "../../../store/types/actionTypes";
 import TracksSearch from "../../../components/TracksSearch";
 import { debounce } from "lodash";
@@ -13,6 +15,7 @@ interface TracksSearchContainerProps {
   token: string;
   trackSearch: TracksSearchState;
   searchTracks: SearchTracksType;
+  setPlayer: SetPlayerActionType;
 }
 
 class TrackSearchContainer extends React.Component<TracksSearchContainerProps> {
@@ -53,6 +56,7 @@ class TrackSearchContainer extends React.Component<TracksSearchContainerProps> {
         tracksSearch={this.props.trackSearch}
         onHandlerChange={this.handleSearchOnChange}
         onHandlerPageChange={this.handlePageChange}
+        setPlayer={this.props.setPlayer}
       />
     );
   }
@@ -69,6 +73,7 @@ const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators(
     {
       searchTracks,
+      setPlayer,
     },
     dispatch
   );
