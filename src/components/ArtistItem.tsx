@@ -28,7 +28,7 @@ const ArtistItem: React.SFC<ArtistItemProps> = ({ artist }) => {
             )}
           </ul>
           <Link to={`/artists/${artist.id}`}>
-            <Button type="link">View Profile!</Button>
+            <Button>View Profile!</Button>
           </Link>
         </div>
       </div>

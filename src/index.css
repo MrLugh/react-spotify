@@ -103,22 +103,22 @@ a,
   margin: 10px 0;
   padding: 7px 22px;
   text-transform: uppercase;
-  background: rgba(24, 24, 24, 0.7);
+  background: rgba(24, 24, 24, 0.7)!important;;
   color: #84be88;
   border-color: #84be88;
   border-radius: 8px;
 }
 
+.content-main button:hover, 
+.content-main button:hover a,
+.content-main button a:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
 .content-page-profile button {
   border-radius: 500px;
   min-width: 200px;
-}
-
-.content-main button:hover,
-.content-main button:visited {
-  color: #fff;
-  background: rgba(24, 24, 24, 0.7);
-  border-color: #fff;
 }
 
 .content-page-artists,

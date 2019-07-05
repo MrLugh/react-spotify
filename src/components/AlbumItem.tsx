@@ -31,7 +31,7 @@ const AlbumItem: React.SFC<AlbumItemProps> = ({ album, setPlayer }) => {
           <li>{album.release_date}</li>
           <li>Tracks {album.total_tracks}</li>
           <li>{album.type}</li>
-          <li><Button type="link" onClick={() => setPlayer(album.uri)}>Play album</Button></li>
+          <li><Button onClick={() => setPlayer(album.uri)}>Play album</Button></li>
         </ul>
       </div>
     </div>

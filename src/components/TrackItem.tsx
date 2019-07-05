@@ -38,11 +38,11 @@ const TrackItem: React.SFC<TrackItemProps> = ({ track, setPlayer }) => {
               track number {track.track_number}, popularity {track.popularity}
             </li>
             <li>
-              <Button type="link" onClick={() => setPlayer(track.uri)}>
+              <Button onClick={() => setPlayer(track.uri)}>
                 Play track
               </Button>
               &nbsp;&nbsp;
-              <Button type="link" onClick={() => setPlayer(track.album.uri)}>
+              <Button onClick={() => setPlayer(track.album.uri)}>
                 Play album
               </Button>
             </li>
