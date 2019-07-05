@@ -22,8 +22,7 @@ interface ArtistProps extends RouteComponentProps<ArtistRouterProps> {
   searchArtist: SearchArtistType;
   artistAlbums: ArtistAlbumsState;
   searchArtistAlbums: SearchArtistAlbumsType;
-  searchArtistAlbumsReset: () => void;
-  setPlayer: SetPlayerActionType
+  setPlayer: SetPlayerActionType;
 }
 
 class Artist extends React.Component<ArtistProps> {
@@ -47,11 +46,12 @@ class Artist extends React.Component<ArtistProps> {
 
   componentDidMount() {
     this.props.searchArtist(this.props.token, this.props.match.params.id);
-    this.searchArtistAlbums();
-  }
-
-  componentWillUnmount() {
-    this.props.searchArtistAlbumsReset();
+    this.props.searchArtistAlbums(
+      this.props.token,
+      this.props.match.params.id,
+      8,
+      this.state.offset
+    );
   }
 
   handlePageChange = (page: number) => {

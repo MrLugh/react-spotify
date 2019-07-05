@@ -9,7 +9,6 @@ import {
   FETCH_ARTIST_PENDING,
   SearchArtistType,
   SearchArtistAlbumsActionTypes,
-  FETCH_ARTIST_ALBUMS_RESET,
   FETCH_ARTIST_ALBUMS_SUCCESS,
   FETCH_ARTIST_ALBUMS_PENDING,
   SearchArtistAlbumsType,
@@ -139,12 +138,6 @@ export const searchArtistAlbumsSuccess = (
   return {
     type: FETCH_ARTIST_ALBUMS_SUCCESS,
     payload: search,
-  };
-};
-
-export const searchArtistAlbumsReset = (): SearchArtistAlbumsActionTypes => {
-  return {
-    type: FETCH_ARTIST_ALBUMS_RESET,
   };
 };
 

@@ -1,7 +1,7 @@
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { searchArtist, searchArtistAlbums, searchArtistAlbumsReset } from "../../actions/artistActions";
+import { searchArtist, searchArtistAlbums } from "../../actions/artistActions";
 import { setPlayer } from "../../actions/playerActions";
 import Artist from "../../components/Artist";
 
@@ -18,7 +18,6 @@ const mapDispatchToProps = (dispatch: any) => {
     {
       searchArtist,
       searchArtistAlbums,
-      searchArtistAlbumsReset,
       setPlayer,
     },
     dispatch

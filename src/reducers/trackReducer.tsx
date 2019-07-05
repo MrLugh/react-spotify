@@ -3,7 +3,6 @@ import {
   SearchTracksActionTypes,
   FETCH_TRACKS_PENDING,
   FETCH_TRACKS_ERROR,
-  FETCH_TRACKS_RESET,
 } from "../store/types/actionTypes";
 
 export const trackReducer = (state = {}, action: SearchTracksActionTypes) => {
@@ -31,9 +30,6 @@ export const trackReducer = (state = {}, action: SearchTracksActionTypes) => {
         tracksPending: false,
         tracksError: true,
       };
-
-    case FETCH_TRACKS_RESET:
-      return null;
 
     default:
       return state;
